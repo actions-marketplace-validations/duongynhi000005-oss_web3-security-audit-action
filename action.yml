@@ -1,0 +1,26 @@
+name: "Web3 Smart Contract Security Audit & Gas Optimizer"
+description: "Automated Web3 smart contract security audit, reentrancy fuzzer, and gas optimizer with SARIF reporting for Solidity."
+author: "duongynhi000005-oss"
+inputs:
+  contracts_dir:
+    description: "Directory containing smart contracts to audit (.sol, .rs)"
+    required: false
+    default: "."
+  fail_on_critical:
+    description: "Whether to fail the CI/CD job if CRITICAL or HIGH severity issues are detected"
+    required: false
+    default: "false"
+  github_token:
+    description: "GitHub Token to post PR review comments with findings"
+    required: false
+    default: "${{ github.token }}"
+  sarif_output:
+    description: "File path to write SARIF 2.1.0 report for GitHub Code Scanning"
+    required: false
+    default: "web3-audit.sarif"
+branding:
+  icon: "shield"
+  color: "blue"
+runs:
+  using: "node20"
+  main: "index.js"
